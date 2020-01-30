@@ -32,7 +32,78 @@
 
 </head>
 
-<body>
+<body style="background-image: url(assets/images/train.jpg); background-size: cover;">
+
+    <!-- Container DIV -->
+    <!-- ========================= -->    
+    <div class="container">
+    
+
+        <!-- Page Layout -->
+        <!-- ========================= -->
+        <br><br><br>
+        <div class="row" id="secOne">
+        
+            <!-- Content -->
+            <!-- ========================= -->
+            <div class="col s12" id="content">
+                <div class="card grey lighten-5">
+                    <div class="card-panel red darken-1">CURRENT TRAIN SCHEDULE</div>
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <table id="table">
+                                <thead id="thead">
+                                    <tr>
+                                        <th>Train Name:</th>
+                                        <th>Destination:</th>
+                                        <th>Frequency (mins):</th>
+                                        <th>Next Arrival:</th>
+                                        <th>Minutes Away:</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody">
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card grey lighten-5">
+                    <div class="card-panel red darken-1">ADD TRAIN</div>
+                    <div class="card-content">
+                        <br>
+                        <input id="trainName" type="text" class="validate">
+                        <label for="trainName">Train Name:</label>
+                        <br>
+                        <input id="destination" type="text" class="validate">
+                        <label for="destination">Destination:</label>
+                        <br>
+                        <input id="firstTrain" type="text" class="validate">
+                        <label for="firstTrain">First Train Time (HH:mm - military time):</label>
+                        <br>
+                        <input id="frequency" type="text" class="validate">
+                        <label for="frequency">Frequency (mins):</label>
+                        <br><br><br>
+                        <button class="btn waves-effect waves-light red darken-1" type="submit" name="action">Submit</button>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- END Page Layout -->
+            <!-- ========================= -->
+        </div>
+
+        
+    <!-- Container END -->
+    <!-- ========================= -->
+    </div>    
 
     <!-- Materialized JS/JQ CDN -->
     <!-- ========================= -->
