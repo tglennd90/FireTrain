@@ -30,6 +30,10 @@
     <!-- ========================= -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+    <!-- Moment.js CDN -->
+    <!-- ========================= -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+
 </head>
 
 <body style="background-image: url(assets/images/train.jpg); background-size: cover;">
@@ -52,7 +56,7 @@
                     <div class="card-stacked">
                         <div class="card-content">
                             <table id="table">
-                                <thead id="thead">
+                                <thead id="tHead">
                                     <tr>
                                         <th>Train Name:</th>
                                         <th>Destination:</th>
@@ -61,14 +65,8 @@
                                         <th>Minutes Away:</th>
                                     </tr>
                                 </thead>
-                                <tbody id="tbody">
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
+                                <tbody id="tBody">
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -90,7 +88,7 @@
                         <input id="frequency" type="text" class="validate">
                         <label for="frequency">Frequency (mins):</label>
                         <br><br><br>
-                        <button class="btn waves-effect waves-light red darken-1" type="submit" name="action">Submit</button>
+                        <button class="btn waves-effect waves-light red darken-1" id="submitBtn" type="submit" name="action">Submit</button>
                         <br>
                     </div>
                 </div>
@@ -103,7 +101,12 @@
         
     <!-- Container END -->
     <!-- ========================= -->
-    </div>    
+    </div>
+    
+    <!-- Firebase CDN -->
+    <!-- ========================= -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-database.js"></script>
 
     <!-- Materialized JS/JQ CDN -->
     <!-- ========================= -->
