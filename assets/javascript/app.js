@@ -20,12 +20,9 @@
     // Element Grabbers //
     // ============================================= //
 
-        // Current Train Schedule //
-        // ============================================= //
-        var tBody = $("#tBody");
-
         // Add Train Form //
         // ============================================= //
+
         var trainName = $("#trainName");
         var destination = $("#destination");
         var firstTrain = $("#firstTrain");
@@ -39,16 +36,20 @@
 
     // Variables //
     // ============================================= //
+
     var format = "HH:mm";
     var tableRow = $("<tr>");
     var tableData = $("<td>");
+    var tBody = $("#tBody");
 
 // Functions //
 // ============================================= //
 
     // Submit Button onClick //
     // ============================================= //
+
     $("#submitBtn").on("click", function(event) {
+
         event.preventDefault()
 
         var newTrainName = trainName.val().trim();
@@ -61,23 +62,43 @@
             destination: newDestination,
             firstTrain: newFirstTrain,
             frequency: newFrequency,
+            
         });
+
+        resetForm();
     });
 
+    // Reset Add Train Form //
+    // ============================================= //
+
+    function resetForm() {
+
+        trainName.val(" ");
+        destination.val(" ");
+        firstTrain.val(" ");
+        frequency.val(" ");
+
+    }
+
+    // Firebase Pull //
+    // ============================================= //
+    
     database.ref().on("child_added", function(childSnapshot) {
 
-        // Log everything that's coming out of snapshot
-        console.log(childSnapshot.val().name);
-        console.log(childSnapshot.val().destination);
-        console.log(childSnapshot.val().firstTrain);
-        console.log(childSnapshot.val().frequency);
+        var tFirst = childSnapshot.val().firstTrain;
+        var tConverted = moment(tFirst, "HH:mm").subtract(1, "years");
+        var tDiff = moment().diff(moment(tConverted), "minutes");
+        var tArrival = childSnapshot.val().frequency;
+        var tRemainder = tDiff % tArrival;
+        var tMinsTill = tArrival - tRemainder;
+        var tNext = moment().add(tMinsTill, "minutes");
   
-        // full list of items to the well
-        // $("#full-member-list").append("<div class='well'><span class='member-name'> " + childSnapshot.val().name +
-        //   " </span><span class='member-email'> " + childSnapshot.val().email +
-        //   " </span><span class='member-age'> " + childSnapshot.val().age +
-        //   " </span><span class='member-comment'> " + childSnapshot.val().comment +
-        //   " </span></div>");
+        tBody.append("<tr><td class='train-name'> " + childSnapshot.val().name +
+          " </td><td class='train-destination'> " + childSnapshot.val().destination +
+          " </td><td class='train-frequency'> " + childSnapshot.val().frequency +
+          " </td><td class='train-arrival'> " + tNext.format("hh:mm") +
+          " </td><td class='train-away'> " + tMinsTill +
+          " </td></tr>");
   
       });
 
