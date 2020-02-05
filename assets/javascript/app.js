@@ -96,7 +96,7 @@
         tBody.append("<tr><td class='train-name'> " + childSnapshot.val().name +
           " </td><td class='train-destination'> " + childSnapshot.val().destination +
           " </td><td class='train-frequency'> " + childSnapshot.val().frequency +
-          " </td><td class='train-arrival'> " + tNext.format("hh:mm") +
+          " </td><td class='train-arrival'> " + tNext.format("HH:mm") +
           " </td><td class='train-away'> " + tMinsTill +
           " </td></tr>");
   
